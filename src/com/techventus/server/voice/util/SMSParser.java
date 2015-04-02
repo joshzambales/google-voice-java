@@ -139,8 +139,11 @@ public class SMSParser {
 	 * @return the Contact
 	 */
 	private Contact parseContact(Element element) {
-		String name = element.selectSingleNode(XPathQuery.MESSAGE_NAME_LINK)
-				.getText().trim();
+	
+		String name = element.selectSingleNode(XPathQuery.MESSAGE_NAME_LINK).getText();
+		if(name != null ){
+			name = name.trim();
+		}
 		Node phoneNumberNode = element
 				.selectSingleNode(XPathQuery.MESSAGE_TYPE);
 		String imgURL = parseImgURL((Element) element
